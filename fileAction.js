@@ -5,6 +5,7 @@
 var
   AWS   = require('aws-sdk'),
   fs    = require('fs'),
+  s3 = new AWS.S3(),
   util  = require('util'),
   uuid  = require('node-uuid');
 
@@ -13,7 +14,6 @@ var fileAction = {};
 
 fileAction.uploadToS3 = function uploadToS3 (bucket, prefix, path, cb) {
   var
-    s3 = new AWS.S3(),
     params = {};
 
   params.Bucket = bucket;
@@ -44,6 +44,21 @@ fileAction.uploadToS3 = function uploadToS3 (bucket, prefix, path, cb) {
         '#SUCCESS[fileAction][uploadToS3]: File uploaded to s3 with params %j', params));
       cb(e, r);
     });
+  });
+};
+
+
+fileAction.getFromS3 = function getFromS3(bucket, key, cb) {
+  console.log("==================", bucket)
+  s3.getObject({Bucket: bucket, Key: key}, function(err, data) {
+    if (err) {
+      util.log(util.format(
+        "#ERROR[fileAction][getFromS3] getting object %s from bucket %s",
+        key, bucket));
+      return cb(err, data);
+    }
+    util.log('CONTENT TYPE:', data.ContentType);
+    cb(err, data);
   });
 };
 

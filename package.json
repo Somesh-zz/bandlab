@@ -10,7 +10,8 @@
   "keywords": [],
   "devDependencies": {
     "node-uuid": "^1.4.7",
-    "request": "*"
+    "request": "*",
+    "aws-sdk": "*"
   },
   "dependencies": {
     "serverless-helpers-js": "~0.1.0"

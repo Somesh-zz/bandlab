@@ -62,11 +62,14 @@ functions:
             parameters:
               paths:
                 id: true
+  commentParse:
+    handler: handler.commentParse
       - s3:
           bucket: bandlabsinbox # inbox is not available
           event: s3:ObjectCreated:*
           rules:
             - prefix: comments/
+            - suffix: .json
 
 
 #    The following are a few example events you can configure
