@@ -1,0 +1,26 @@
+{
+  "body": {},
+  "method": "GET",
+  "principalId": "",
+  "stage": "test-invoke-stage",
+  "headers": {},
+  "query": {},
+  "path": {
+    "id": "2"
+  },
+  "identity": {
+    "cognitoIdentityPoolId": "",
+    "accountId": "845863514129",
+    "cognitoIdentityId": "",
+    "caller": "845863514129",
+    "apiKey": "test-invoke-api-key",
+    "sourceIp": "test-invoke-source-ip",
+    "accessKey": "ASIAI4ZIWCBXA2NZV6UA",
+    "cognitoAuthenticationType": "",
+    "cognitoAuthenticationProvider": "",
+    "userArn": "arn:aws:iam::845863514129:root",
+    "userAgent": "Apache-HttpClient/4.5.x (Java/1.8.0_102)",
+    "user": "845863514129"
+  },
+  "stageVariables": {}
+}
