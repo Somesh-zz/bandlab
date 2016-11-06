@@ -14,8 +14,6 @@ require('./env')(config);
 
 
 module.exports.getComment = (event, context, callback) => {
-
-  // console.log('event::::::::::', process.env);
   comments.getById(event.path.id, function(err, response) {
     if (err) {
       return callback(err, response);
@@ -37,19 +35,16 @@ module.exports.getComment = (event, context, callback) => {
 };
 
 module.exports.commentParse = (event, context) => {
-  console.log('Received event:', JSON.stringify(event, null, 2));
-  // Get the object from the event and show its content type
   var
     bucket  = event.Records[0].s3.bucket.name,
     key     = event.Records[0].s3.object.key;
 
-  // var bucket = 'bandlabsinbox', key = 'comments/c34564c0-a42c-11e6-a26e-1d3ec37b21e0.json'
   fileAction.getFromS3(bucket, key, function(err, data) {
     if (err) {
-      context.fail("Error getting file: " + err);
+      context.fail('Error getting file: ' + err);
     }
 
-    util.log("Content: ", data.Body.toString('utf8'));
+    util.log('Content: ', data.Body.toString('utf8'));
     context.succeed();
   });
 };

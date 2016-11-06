@@ -33,6 +33,10 @@ provider:
       Action:
         - "s3:PutObject"
       Resource: "arn:aws:s3:::*"
+    - Effect: "Allow"
+      Action:
+        - "s3:GetObject"
+      Resource: "arn:aws:s3:::*"
         # Fn::Join: 
         #   - ""
         #   - - "arn:aws:s3:::"
@@ -64,6 +68,7 @@ functions:
                 id: true
   commentParse:
     handler: handler.commentParse
+    events:
       - s3:
           bucket: bandlabsinbox # inbox is not available
           event: s3:ObjectCreated:*

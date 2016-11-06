@@ -49,7 +49,6 @@ fileAction.uploadToS3 = function uploadToS3 (bucket, prefix, path, cb) {
 
 
 fileAction.getFromS3 = function getFromS3(bucket, key, cb) {
-  console.log("==================", bucket)
   s3.getObject({Bucket: bucket, Key: key}, function(err, data) {
     if (err) {
       util.log(util.format(
